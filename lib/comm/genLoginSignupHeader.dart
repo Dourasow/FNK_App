@@ -10,29 +10,29 @@ class genLoginSignupHeader extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          SizedBox(height: 50.0),
+          const SizedBox(height: 50.0),
           Text(
             headerName,
-            style: TextStyle(
+            style: const TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
                 fontSize: 40.0),
           ),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
           // Image.asset(
           //   "assets/images/logo.png",
           //  height: 150.0,
           // width: 150.0,
           // ),
-          SizedBox(height: 10.0),
-          Text(
+          const SizedBox(height: 10.0),
+          const Text(
             'NoteKepper App',
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.black38,
                 fontSize: 25.0),
           ),
-          SizedBox(height: 10.0),
+          const SizedBox(height: 10.0),
         ],
       ),
     );

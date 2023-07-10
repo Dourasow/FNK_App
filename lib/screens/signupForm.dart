@@ -40,57 +40,72 @@ class SignupScreen extends StatelessWidget {
 
   // @override
   // Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Sign Up'),
-//       ),
-//       body: Padding(
-//         padding: EdgeInsets.all(16.0),
-//         child: Form(
-//           key: _formKey,
-//           child: Column(
-//             mainAxisAlignment: MainAxisAlignment.center,
-//             children: [
-//               TextFormField(
-//                 controller: emailController,
-//                 validator: (value) {
-//                   if (value!.isEmpty) {
-//                     return 'Please enter your email';
-//                   }
-//                   return null;
-//                 },
-//                 decoration: InputDecoration(
-//                   labelText: 'Email',
-//                 ),
-//               ),
-//               TextFormField(
-//                 controller: passwordController,
-//                 obscureText: true,
-//                 validator: (value) {
-//                   if (value!.isEmpty) {
-//                     return 'Please enter your password';
-//                   }
-//                   return null;
-//                 },
-//                 decoration: InputDecoration(
-//                   labelText: 'Password',
-//                 ),
-//               ),
-//               SizedBox(height: 16.0),
-//               ElevatedButton(
-//                 onPressed: () {
-//                   if (_formKey.currentState!.validate()) {
-//                     signUp(context);
-//                   }
-//                 },
-//                 child: Text('Sign Up'),
-//               ),
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
+  //   return Scaffold(
+  //     appBar: AppBar(
+  //       title: Text('Sign Up'),
+  //     ),
+  //     body: Padding(
+  //       padding: EdgeInsets.all(16.0),
+  //       child: Form(
+  //         key: _formKey,
+  //         child: Column(
+  //           mainAxisAlignment: MainAxisAlignment.center,
+  //           children: [
+  //             genLoginSignupHeader('Signup'),
+  //             getTextFormField(
+  //               controller: _conUserName,
+  //               icon: Icons.person,
+  //               hintName: 'User ID',
+  //               validator: (value) {
+  //                 if (value!.isEmpty) {
+  //                   return 'Please enter your email';
+  //                 }
+  //                 return null;
+  //               },
+  //               // decoration: InputDecoration(
+  //               //   labelText: 'Email',
+  //               // ),
+  //             ),
+  //             TextFormField(
+  //               controller: _conEmail,
+  //               validator: (value) {
+  //                 if (value!.isEmpty) {
+  //                   return 'Please enter your email';
+  //                 }
+  //                 return null;
+  //               },
+  //               decoration: InputDecoration(
+  //                 labelText: 'Email',
+  //               ),
+  //             ),
+  //             TextFormField(
+  //               controller: _conPassword,
+  //               obscureText: true,
+  //               validator: (value) {
+  //                 if (value!.isEmpty) {
+  //                   return 'Please enter your password';
+  //                 }
+  //                 return null;
+  //               },
+  //               decoration: InputDecoration(
+  //                 labelText: 'Password',
+  //               ),
+  //             ),
+  //             SizedBox(height: 16.0),
+  //             ElevatedButton(
+  //               onPressed: () {
+  //                 if (_formKey.currentState!.validate()) {
+  //                   signUp(context);
+  //                 }
+  //               },
+  //               child: Text('Sign Up'),
+  //             ),
+  //           ],
+  //         ),
+  //       ),
+  //     ),
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -114,22 +129,42 @@ class SignupScreen extends StatelessWidget {
                   //     hintName: 'User ID'),
                   // SizedBox(height: 10.0),
                   getTextFormField(
-                      controller: _conUserName,
-                      icon: Icons.person_outline,
-                      inputType: TextInputType.name,
-                      hintName: 'User Name'),
+                    controller: _conUserName,
+                    icon: Icons.person_outline,
+                    inputType: TextInputType.name,
+                    hintName: 'User Name',
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your email';
+                      }
+                      return null;
+                    },
+                  ),
                   SizedBox(height: 10.0),
                   getTextFormField(
-                      controller: _conEmail,
-                      icon: Icons.email,
-                      inputType: TextInputType.emailAddress,
-                      hintName: 'Email'),
+                    controller: _conEmail,
+                    icon: Icons.email,
+                    inputType: TextInputType.emailAddress,
+                    hintName: 'Email',
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your email';
+                      }
+                      return null;
+                    },
+                  ),
                   SizedBox(height: 10.0),
                   getTextFormField(
                     controller: _conPassword,
                     icon: Icons.lock,
                     hintName: 'Password',
                     isObscureText: true,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Please enter your email';
+                      }
+                      return null;
+                    },
                   ),
                   SizedBox(height: 10.0),
                   // getTextFormField(
@@ -152,15 +187,21 @@ class SignupScreen extends StatelessWidget {
                       ),
                       // onPressed: signUp,
                       onPressed: () {
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) =>
-                                    SigninScreen(database: database)),
-                            (Route<dynamic> route) => false);
+                        if (_formKey.currentState!.validate()) {
+                          signUp(context);
+                        }
                       },
                     ),
                   ),
+                  //       Navigator.pushAndRemoveUntil(
+                  //           context,
+                  //           MaterialPageRoute(
+                  //               builder: (_) =>
+                  //                   SigninScreen(database: database)),
+                  //           (Route<dynamic> route) => false);
+                  //     },
+                  //   ),
+                  // ),
                   Container(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
